@@ -1,5 +1,9 @@
 # LaTeXGenerator
 
+========================================
+|| Welcome to my LaTeX Generator v1.0 ||
+========================================
+
 **WORK IN PROGRESS**
 
 After growing tired of managing my LaTeX dependencies and changes to my LaTeX notes formats over the years, I've decided to make myself a desktop app to manage how my LaTeX projects are managed.
