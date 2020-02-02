@@ -80,58 +80,8 @@ def main():
     ttk.Button(mainframe, text="Generate", command=generate).grid(column=4, row=11, sticky=E)
     root.mainloop()
 
-    '''
-    print("========================================")
-    print("|| Welcome to my LaTeX Generator v1.0 ||")
-    print("========================================")
-    print("Type 'e' at any point to exit...")
-    
-    cwd = os.getcwd()
-    os.chdir("..")
-    os.mkdir("New Report")
-    os.mkdir("New Report/src")
-    os.mkdir("New Report/img")
-    os.mkdir("New Report/tex")
-    
-
-    #Recruiter Name
-    text_in = input("Author: ")
-    recruiter_name = text_in if text_in != "e" else sys.exit()
-
-    #Company Name
-    text_in = input("Enter Name of Company: ")
-    company_name = text_in if text_in != "e" else sys.exit()
-
-    #Company Address
-    text_in = input("Enter Company Address: ")
-    company_address = text_in if text_in != "e" else sys.exit()
-
-    #set today's date
-    today_date = date.today().strftime("%B %d, %Y")
 
 
-    #make folder architecture
-    #eventually -> chose target folder
-
-    cwd = os.getcwd()
-    cwd.chdir("..")
-    os.mkdir("New Report")
-    
-    
-    #copy folder
-    new_folder = "%s -- Cover Letter" % company_name
-    new_file = company_name + "_cover_letter.tex"
-    os.mkdir(new_folder)
-    shutil.copy("templates/template.tex", new_folder + "/" + new_file)
-
-    #
-    
-    with fileinput.FileInput(new_folder + "/" + new_file, inplace=True, backup='.bak') as file:
-        for line in file:
-            print(line.replace("<DATE>", today_date), end='')
-        for line in file:
-            print(line.replace("<RECRUITER_NAME>", recruiter_name), end='')
-    '''
 
 if __name__ == "__main__":
     main()
