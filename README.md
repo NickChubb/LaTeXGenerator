@@ -12,5 +12,9 @@ Started Jan 31, 2020 by Nick Chubb
 
 1) Complete GUI
 2) Complete restructuring of my template .tex documents
-3) Correctly generate titlepage and table of contents **(for reports)**
+3) Generate metadata file for new project (inlcude list of LaTeX functions I have written)
+4) Correctly generate titlepage and table of contents **(for reports)**
 
+## The Future...
+
+1) Add functionality to manage my resume and cover letters with header
