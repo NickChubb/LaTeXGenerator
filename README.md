@@ -1,8 +1,4 @@
-# LaTeXGenerator
-
-========================================
-|| Welcome to my LaTeX Generator v1.0 ||
-========================================
+# LaTeXGenerator v1.0
 
 **WORK IN PROGRESS**
 
