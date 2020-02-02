@@ -8,6 +8,12 @@ My LaTeXGenerator uses Python (with Tkinter for GUI) to create myself new projec
 
 Started Jan 31, 2020 by Nick Chubb
 
+## How it works
+
+* get user input
+* create new project folder
+* populate new project folder with newly created .tex documents
+
 ## To-Do
 
 1) Complete GUI
@@ -17,4 +23,5 @@ Started Jan 31, 2020 by Nick Chubb
 
 ## The Future...
 
-1) Add functionality to manage my resume and cover letters with header
+* functionality to manage my resume and cover letters with header
+* compile to pdf...? (or should the users TeX editor handle that?)
