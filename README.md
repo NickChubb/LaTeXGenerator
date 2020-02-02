@@ -6,7 +6,7 @@ After growing tired of managing my LaTeX dependencies and changes to my LaTeX no
 
 My LaTeXGenerator uses Python (with Tkinter for GUI) to create myself new project folders in a logical/proper way.
 
-Started Jan 31, 2020 by Nick Chubb
+Started Jan 31, 2020 by [Nick Chubb]{http://nchubb.com}
 
 ## How it works
 
