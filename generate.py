@@ -13,39 +13,115 @@ import sys
 import fileinput
 import os
 import shutil
+
 import pylatex
 
 from tkinter import *
 from tkinter import ttk
 
+
 from datetime import date
 
-def generate():
+#---Global Variables---#
+
+report_fields = ["Author", "Title", "Sub-title", "Class"]
+note_fields = ["Author", "Class", "Lecture"]
+cl_fields = ["Name", "Company"]
+
+fields_array = [report_fields, note_fields, cl_fields]
+
+entries = {}
+
+#------Make Fields------#
+
+def makefields(contframe, root, button_index):
+
+    #delete frame
+    #make new frame
+    #populate new frame
+
+    entries.clear()
+
+    if contframe.winfo_children() != 0:
+        for widget in contframe.winfo_children():
+            widget.destroy()
+
+
+        #entries.clear()
+        
+
+    for field in fields_array[button_index.get() - 1]:
+        print(field)
+        row = Frame(contframe)
+        lab = Label(row, width=22, text=field+": ", anchor='w')
+        ent = Entry(row)
+        ent.insert(0, "0")
+        row.pack(side=TOP, 
+                 fill=X, 
+                 padx=5, 
+                 pady=5)
+        lab.pack(side=LEFT)
+        ent.pack(side=RIGHT, 
+                 expand=YES, 
+                 fill=X)
+
+        entries[field] = ent
+
+    print(entries)
+
+
+#----Generate LaTeX----#
+
+def generate(auth, tit, subtit):
+
+    folder_title = tit + "-- Report"
+    
     cwd = os.getcwd()
     os.chdir("..")
-    os.mkdir("New Report")
-    os.mkdir("New Report/src")
-    os.mkdir("New Report/img")
-    os.mkdir("New Report/tex")
+    os.mkdir(folder_title)
+    os.chdir(folder_title)
+    os.mkdir("src")
+    os.mkdir("img")
+    os.mkdir("tex")
+
+    
 
 #--------Main--------#
 def main():
+    
 
     #Setting up GUI
     root = Tk()
-    author_input = StringVar()
-    title_input = StringVar()
-    subtitle_input = StringVar()
 
-    root.title("LaTeX Generator")
+    root.title("LaTeX Generator v1.0")
 
-    mainframe = ttk.Frame(root, padding="3 3 12 12")
-
-    mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
-    root.columnconfigure(0, weight=1)
-    root.rowconfigure(0, weight=1)
-
+    entryFrame = Frame(root)
+    generateFrame = Frame(root)
     
+    v = IntVar()
+
+    Label(root, text="Choose your project type:", padx=20, pady=10).pack()
+
+    btnReport = Radiobutton(root, text="Report", variable=v, value=1, command= lambda: makefields(entryFrame, root, v))
+    btnReport.pack(anchor=W)
+
+    btnNotes = Radiobutton(root, text="Notes", variable=v, value=2, command= lambda: makefields(entryFrame, root, v))
+    btnNotes.pack(anchor=W)
+    
+    btnCL = Radiobutton(root, text="Cover Letter", variable=v, value=3, command= lambda: makefields(entryFrame, root, v))
+    btnCL.pack(anchor=W)
+
+    btnGen = Button(generateFrame, text="Generate")
+    btnGen.pack(anchor=E)
+
+    entryFrame.pack()
+
+    generateFrame.pack()
+    
+    
+    root.mainloop()
+
+    '''
 
     ttk.Label(mainframe,
               text="Please enter the following info to generate your LaTeX Project...").grid(columnspan=2, column=3, row=1, sticky=W)
@@ -77,8 +153,10 @@ def main():
                                                              row=9, sticky=W)
 
     
-    ttk.Button(mainframe, text="Generate", command=generate).grid(column=4, row=11, sticky=E)
+    ttk.Button(mainframe, text="Generate", command=lambda: generate(author, title_input, subtitle)).grid(column=4, row=11, sticky=E)
     root.mainloop()
+
+    '''
 
 
 
