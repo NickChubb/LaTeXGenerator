@@ -53,9 +53,9 @@ def makefields(contframe, root, button_index):
     for field in fields_array[button_index.get() - 1]:
         print(field)
         row = Frame(contframe)
-        lab = Label(row, width=22, text=field+": ", anchor='w')
+        lab = Label(row, width=10, text=field+": ", anchor='w')
         ent = Entry(row)
-        ent.insert(0, "0")
+        
         row.pack(side=TOP, 
                  fill=X, 
                  padx=5, 
@@ -67,12 +67,16 @@ def makefields(contframe, root, button_index):
 
         entries[field] = ent
 
-    print(entries)
-
 
 #----Generate LaTeX----#
 
-def generate(auth, tit, subtit):
+def generate(ents):
+
+    print(ents["Author"].get())
+
+    
+
+    '''
 
     folder_title = tit + "-- Report"
     
@@ -84,6 +88,8 @@ def generate(auth, tit, subtit):
     os.mkdir("img")
     os.mkdir("tex")
 
+    '''
+
     
 
 #--------Main--------#
@@ -92,6 +98,8 @@ def main():
 
     #Setting up GUI
     root = Tk()
+
+    root.geometry('300x300')
 
     root.title("LaTeX Generator v1.0")
 
@@ -111,7 +119,7 @@ def main():
     btnCL = Radiobutton(root, text="Cover Letter", variable=v, value=3, command= lambda: makefields(entryFrame, root, v))
     btnCL.pack(anchor=W)
 
-    btnGen = Button(generateFrame, text="Generate")
+    btnGen = Button(generateFrame, text="Generate", command = lambda: generate(entries))
     btnGen.pack(anchor=E)
 
     entryFrame.pack()
@@ -120,6 +128,7 @@ def main():
     
     
     root.mainloop()
+
 
     '''
 
