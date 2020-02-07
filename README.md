@@ -16,7 +16,7 @@ Started Jan 31, 2020 by [Nick Chubb](http://nchubb.com)
 
 ## To-Do
 
-1) Complete GUI
+1) Complete Folder and file creation functions
 2) Complete restructuring of my template .tex documents
 3) Generate metadata file for new project (inlcude list of LaTeX functions I have written)
 4) Correctly generate titlepage and table of contents **(for reports)**
