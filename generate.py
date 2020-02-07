@@ -18,7 +18,7 @@ import pylatex
 
 from tkinter import *
 from tkinter import ttk
-
+from tkinter import messagebox
 
 from datetime import date
 
@@ -31,6 +31,27 @@ cl_fields = ["Name", "Company"]
 fields_array = [report_fields, note_fields, cl_fields]
 
 entries = {}
+
+def makeReport():
+    return
+
+def makeNotes():
+    return
+
+def makeCL():
+    return
+
+#------Make Folder------#
+
+def makeFolder(folder_title):
+    
+    cwd = os.getcwd()
+    os.chdir("..")
+    os.mkdir(folder_title)
+    os.chdir(folder_title)
+    os.mkdir("src")
+    os.mkdir("img")
+    os.mkdir("tex")
 
 #------Make Fields------#
 
@@ -70,30 +91,28 @@ def makefields(contframe, root, button_index):
 
 def generate(ents, btn_num):
 
-    ind = btn_num - 1
-
     for entry in ents:
-        print(ents[entry].get())
+        if ents[entry].get() == "":
+
+            #Throw error message if fields blank
+            messagebox.showinfo("ERROR", "ERROR: No fields may be left blank")
+
+            return
+
         
 
+    if btn_num == 1:
 
-    
+        makeReport()
 
+    elif btn_num == 2:
 
-    '''
+        makeNotes()
 
-    folder_title = tit + "-- Report"
-    
-    cwd = os.getcwd()
-    os.chdir("..")
-    os.mkdir(folder_title)
-    os.chdir(folder_title)
-    os.mkdir("src")
-    os.mkdir("img")
-    os.mkdir("tex")
+    elif btn_num == 2:
 
-    '''
-
+        makeCL()
+        
     
 
 #--------Main--------#
@@ -132,44 +151,6 @@ def main():
     
     
     root.mainloop()
-
-
-    '''
-
-    ttk.Label(mainframe,
-              text="Please enter the following info to generate your LaTeX Project...").grid(columnspan=2, column=3, row=1, sticky=W)
-
-    ttk.Label(mainframe, text="Project Type: ").grid(column=3,
-                                                     row=3, sticky=E)
-    
-    project_type = ttk.Combobox(mainframe,
-                                values = ["report", "notes"],
-                                state="readonly").grid(column=4,
-                                                           row=3, sticky=W)
-
-
-    ttk.Label(mainframe, text="Author: ").grid(column=3, row=5, sticky=E)
-    author = ttk.Entry(mainframe,
-                       textvariable = author_input).grid(column=4,
-                                                     row=5, sticky=W)
-
-    
-    ttk.Label(mainframe, text="Title: ").grid(column=3, row=7, sticky=E)
-    title = ttk.Entry(mainframe,
-                      textvariable = title_input).grid(column=4,
-                                                       row=7, sticky=W)
-
-    
-    ttk.Label(mainframe, text="Sub-Title: ").grid(column=3, row=9, sticky=E)
-    subtitle = ttk.Entry(mainframe,
-                         textvariable = subtitle_input).grid(column=4,
-                                                             row=9, sticky=W)
-
-    
-    ttk.Button(mainframe, text="Generate", command=lambda: generate(author, title_input, subtitle)).grid(column=4, row=11, sticky=E)
-    root.mainloop()
-
-    '''
 
 
 
