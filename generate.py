@@ -4,7 +4,7 @@
 # file that generates
 # the LaTeX files
 #
-# To-Do --> GUI!!!
+# To-Do -> Generate LaTeX for project types
 #
 #---------------------#
 
@@ -23,14 +23,16 @@ from tkinter import messagebox
 from datetime import date
 
 #---Global Variables---#
-
+    
 report_fields = ["Author", "Title", "Sub-title", "Course"]
-note_fields = ["Author", "Course", "Lecture"]
+note_fields = ["Author", "Course", "Lecture Num"]
 cl_fields = ["Name", "Company"]
 
 fields_array = [report_fields, note_fields, cl_fields]
 
 entries = {}
+
+#----Make Folders and Documents----#
 
 def makeReport(fields):
 
@@ -44,20 +46,34 @@ def makeReport(fields):
     new_folder_title = title + " - Report"
 
     makeFolder(new_folder_title)
-
     
     
     return
 
 def makeNotes(fields):
 
-    makeFolder(tit)
+    #author, course, lecture
+
+    author = fields["Author"].get()
+    course = fields["Course"].get()
+    lecture = fields["Lecture Num"].get()
+
+    new_folder_title = course + "Notes - Lecture #"
+
+    makeFolder(new_folder_title)
     
     return
 
 def makeCL(fields):
 
-    makeFolder(tit)
+    #name, company
+
+    name = fields["Name"].get()
+    company = fields["Company"].get()
+
+    new_folder_title = company + " - Cover Letter"
+
+    makeFolder(new_folder_title)
 
     return
 
