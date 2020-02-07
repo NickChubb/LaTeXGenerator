@@ -46,8 +46,6 @@ def makefields(contframe, root, button_index):
         for widget in contframe.winfo_children():
             widget.destroy()
 
-
-        #entries.clear()
         
 
     for field in fields_array[button_index.get() - 1]:
@@ -70,11 +68,17 @@ def makefields(contframe, root, button_index):
 
 #----Generate LaTeX----#
 
-def generate(ents):
+def generate(ents, btn_num):
 
-    print(ents["Author"].get())
+    ind = btn_num - 1
+
+    for entry in ents:
+        print(ents[entry].get())
+        
+
 
     
+
 
     '''
 
@@ -119,7 +123,7 @@ def main():
     btnCL = Radiobutton(root, text="Cover Letter", variable=v, value=3, command= lambda: makefields(entryFrame, root, v))
     btnCL.pack(anchor=W)
 
-    btnGen = Button(generateFrame, text="Generate", command = lambda: generate(entries))
+    btnGen = Button(generateFrame, text="Generate", command = lambda: generate(entries, v.get()))
     btnGen.pack(anchor=E)
 
     entryFrame.pack()
