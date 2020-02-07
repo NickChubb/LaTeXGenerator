@@ -24,21 +24,41 @@ from datetime import date
 
 #---Global Variables---#
 
-report_fields = ["Author", "Title", "Sub-title", "Class"]
-note_fields = ["Author", "Class", "Lecture"]
+report_fields = ["Author", "Title", "Sub-title", "Course"]
+note_fields = ["Author", "Course", "Lecture"]
 cl_fields = ["Name", "Company"]
 
 fields_array = [report_fields, note_fields, cl_fields]
 
 entries = {}
 
-def makeReport():
+def makeReport(fields):
+
+    #author, title, sub-title, class
+
+    author = fields["Author"].get()
+    title = fields["Title"].get()
+    sub_title = fields["Sub-title"].get()
+    course = fields["Course"].get()
+
+    new_folder_title = title + " - Report"
+
+    makeFolder(new_folder_title)
+
+    
+    
     return
 
-def makeNotes():
+def makeNotes(fields):
+
+    makeFolder(tit)
+    
     return
 
-def makeCL():
+def makeCL(fields):
+
+    makeFolder(tit)
+
     return
 
 #------Make Folder------#
@@ -103,16 +123,17 @@ def generate(ents, btn_num):
 
     if btn_num == 1:
 
-        makeReport()
+        makeReport(ents) 
 
     elif btn_num == 2:
 
-        makeNotes()
+        makeNotes(ents)
 
     elif btn_num == 2:
 
-        makeCL()
-        
+        makeCL(ents)
+
+    #more.....?
     
 
 #--------Main--------#
